@@ -1,27 +1,26 @@
 #!/bin/bash
-install_dir="/opt/codetimer"
-binary_install_dir="/usr/local/bin"
-current_dir="$(pwd)"
-if [ ! -d "$install_dir" ];
+INSTALL_DIR="/opt/codetimer"
+BINARY_INSTALL_DIR="/usr/local/bin"
+CURRENT_DIR="$(pwd)"
+
+if [ -d "$INSTALL_DIR" ];
 then 
-    sudo mkdir $install_dir
+    rm -r $INSTALL_DIR
 fi
-if [ ! -d "$install_dir/visuals" ];
-then 
-    sudo mkdir "$install_dir/visuals"
-fi
-sudo cp "$current_dir/timer.sh" $install_dir/
-sudo cp -R "$current_dir/visuals/" "$install_dir/visuals/"
+sudo mkdir $INSTALL_DIR
+
+sudo cp "$CURRENT_DIR/timer.sh" $INSTALL_DIR/
+sudo cp -R "$CURRENT_DIR/visuals/" "$INSTALL_DIR/"
 sudo cat > /usr/share/applications/codetimer.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=Code Timer
 Comment=VS Code time tracker.
-Exec=bash $install_dir/timer.sh
-Icon=$install_dir/visuals/icon.png
+Exec=bash $INSTALL_DIR/timer.sh
+Icon=$INSTALL_DIR/visuals/icon.png
 Terminal=true
 StartupNotify=false
 EOF
 chmod u+x /usr/share/applications/codetimer.desktop
-sudo cp "$current_dir/binaries/codetimer" $binary_install_dir/
+sudo cp "$CURRENT_DIR/binaries/codetimer" $BINARY_INSTALL_DIR/

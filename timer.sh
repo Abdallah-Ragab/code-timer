@@ -53,15 +53,6 @@ SHOULD_QUIT=false
 run(){
     check_requirements
     iscoderunning
-    # if $LAUNCH_CODE && ! $CODE_RUNNING; then
-    #     printf "${LYELLOW} LAUNCHING VS CODE ... ${NC}"
-    #     code
-    #     while ! $CODE_RUNNING;
-    #     do
-    #         iscoderunning
-    #         sleep 1
-    #     done
-    # fi
     run_code
     while :; do
         live_view
@@ -187,11 +178,17 @@ fi
 
 }
 render_art(){
-    file="visuals/ascii_logo.txt"
-    while IFS= read -r line
+    LOCAL_FILE="visuals/ascii_logo.txt"
+    INSTALLATION_FILE="/opt/codetimer/visuals/ascii_logo.txt"
+    if [[ -f "$LOCAL_FILE" ]]; then
+        FILE=$LOCAL_FILE
+    elif [[ -f "$INSTALLATION_FILE" ]]; then
+        FILE=$INSTALLATION_FILE
+    fi
+    while IFS= read -r LINE
     do
-    echo "$line"
-    done < "$file"
+    echo "$LINE"
+    done < "$FILE"
 }
 
 listen_for_keys(){
