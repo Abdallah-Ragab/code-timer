@@ -173,7 +173,7 @@ ${BWHITE}  Controls:
     fi
 
 if $SHOW_PROMPT;then
-    printf "\n${BYELLOW}Are you sure ? ${NC}[${BRED}Y${NC}]es or [${BGREEN}N${NC}]o\n${NC}"
+    printf "\n${BYELLOW}  Are you sure ? ${NC}[${BRED}Y${NC}]es or [${BGREEN}N${NC}]o\n${NC}"
 fi
 
 }
@@ -184,6 +184,8 @@ render_art(){
         FILE=$LOCAL_FILE
     elif [[ -f "$INSTALLATION_FILE" ]]; then
         FILE=$INSTALLATION_FILE
+    else
+        return
     fi
     while IFS= read -r LINE
     do
