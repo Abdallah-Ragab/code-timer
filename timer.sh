@@ -155,6 +155,7 @@ count(){
 }
 live_view(){
     clear
+    render_art
     if ! $CODE_RUNNING;then
         printf "${LRED}  VS CODE IS NOT RUNNING CLICK [C] TO LAUNCH IT\n${NC}"
         printf "${BYELLOW}  Hint:${LGRAY} run $0 -c to launch vs code alongside the timer.\n${NC}"
@@ -184,8 +185,15 @@ if $SHOW_PROMPT;then
     printf "\n${BYELLOW}Are you sure ? ${NC}[${BRED}Y${NC}]es or [${BGREEN}N${NC}]o\n${NC}"
 fi
 
-
 }
+render_art(){
+    file="visuals/ascii_logo.txt"
+    while IFS= read -r line
+    do
+    echo "$line"
+    done < "$file"
+}
+
 listen_for_keys(){
 
     PRE_SEC=$(date +%s)
