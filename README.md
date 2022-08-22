@@ -23,3 +23,4 @@ You can use any of these **options:**
 
  - ` -b [seconds]` Set the buffer time.
  - ` -c ` Run VS Code alongside the timer (if it wasn't already running).
+ - ` -h ` Show instructions.
