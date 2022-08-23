@@ -7,7 +7,7 @@ Buffer Time can be set using option -b and the its default duration is 300s or 5
 
 Simply run the installation script.
 
-    ./install.sh
+    sudo ./install.sh
 
 Make sure the script is executable by running the following command before running the installation script.
 
