@@ -148,8 +148,7 @@ live_view(){
     clear
     render_art
     if ! $CODE_RUNNING;then
-        printf "${LRED}  VS CODE IS NOT RUNNING CLICK [C] TO LAUNCH IT\n${NC}"
-        printf "${BYELLOW}  Hint:${LGRAY} run $0 -c to launch vs code alongside the timer.\n${NC}"
+        printf "${LRED}  VS CODE IS NOT RUNNING ${BWHITE}CLICK [C]${LRED} TO LAUNCH IT\n${NC}"
     elif $PAUSED;then
         printf "${BRED}  TIMER PAUSED\n${NC}"
     elif $CODE_ACTIVE;then
@@ -172,6 +171,9 @@ ${BWHITE}  Controls:
     printf "    ${LMAGENTA}[${BYELLOW}C${LMAGENTA}]${NC}ode - Run VS Code\n"
     fi
 
+if ! $CODE_RUNNING;then
+    printf "${BYELLOW}\n  Hint:${LGRAY} run $0 -c to launch vs code alongside the timer.\n${NC}"
+fi
 if $SHOW_PROMPT;then
     printf "\n${BYELLOW}  Are you sure ? ${NC}[${BRED}Y${NC}]es or [${BGREEN}N${NC}]o\n${NC}"
 fi
@@ -265,6 +267,7 @@ quit(){
 run_code(){
     if $LAUNCH_CODE && ! $CODE_RUNNING; then
     clear
+    render_art
     printf "${LYELLOW} LAUNCHING VS CODE ... \n${NC}"
     code
     while ! $CODE_RUNNING;
