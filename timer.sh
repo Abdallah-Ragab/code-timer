@@ -7,7 +7,7 @@ Requirements:
     pidof, xdotool, xargs
 
 USAGE:
-    ./$(basename "$0") [-c] [-b seconds]
+    $0 [-c] [-b seconds]
 
 OPTIONS:
     -b  [OPTIONAL] Set buffer time (in seconds) default value is 300s.
@@ -172,7 +172,7 @@ ${BWHITE}  Controls:
     fi
 
 if ! $CODE_RUNNING;then
-    printf "${BYELLOW}\n  Hint:${LGRAY} run $0 -c to launch vs code alongside the timer.\n${NC}"
+    printf "${BYELLOW}\n  Hint:${LGRAY} run${BWHITE} $0 -c${LGRAY} to launch vs code alongside the timer.\n${NC}"
 fi
 if $SHOW_PROMPT;then
     printf "\n${BYELLOW}  Are you sure ? ${NC}[${BRED}Y${NC}]es or [${BGREEN}N${NC}]o\n${NC}"
