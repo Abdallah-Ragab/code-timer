@@ -10,6 +10,8 @@ fi
 sudo mkdir $INSTALL_DIR
 
 sudo cp "$CURRENT_DIR/timer.sh" $INSTALL_DIR/
+sudo chmod +x "$INSTALL_DIR/timer.sh" 
+
 sudo cp -R "$CURRENT_DIR/visuals/" "$INSTALL_DIR/"
 sudo cat > /usr/share/applications/codetimer.desktop << EOF
 [Desktop Entry]
@@ -22,5 +24,8 @@ Icon=$INSTALL_DIR/visuals/icon.png
 Terminal=true
 StartupNotify=false
 EOF
-chmod u+x /usr/share/applications/codetimer.desktop
+
+sudo chmod u+x /usr/share/applications/codetimer.desktop
+
 sudo cp "$CURRENT_DIR/binaries/codetimer" $BINARY_INSTALL_DIR/
+sudo chmod +x "$BINARY_INSTALL_DIR/codetimer" 

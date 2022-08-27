@@ -1,6 +1,7 @@
 #! /bin/bash
 GUIDE="
 Description:
+    The Code Timer.
     Simple script to keep track of your coding time spent on VS Code.
 
 Requirements:
@@ -115,7 +116,7 @@ iscoderunning(){
 }
 update(){
     iscoderunning
-    if ! $CODE_RUNNING = || $SHOW_PROMPT;then
+    if ! $CODE_RUNNING || $SHOW_PROMPT;then
         return
     fi
     if ($CODE_ACTIVE);then
@@ -199,7 +200,7 @@ listen_for_keys(){
 
     PRE_SEC=$(date +%s)
 
-    read -t .$((10**9-10#$(date +%N))) -n 1 input
+    read -r -s -t .$((10**9-10#$(date +%N))) -n 1 input
 
     if [[ $input = "q" ]] || [[ $input = "Q" ]]; then
         if ! $SHOW_PROMPT;then
@@ -277,6 +278,11 @@ run_code(){
     done
     fi
 }
+
+if [ $1 = "--help" ];then
+    echo "$GUIDE"
+    exit
+fi
 
 while getopts "cb:h" arg; do
 case $arg in
